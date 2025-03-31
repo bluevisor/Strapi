@@ -1,0 +1,84 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "shortDescription": {
+      "type": "string"
+    },
+    "price": {
+      "type": "decimal",
+      "required": true
+    },
+    "originalPrice": {
+      "type": "decimal"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "products"
+    },
+    "rating": {
+      "type": "decimal"
+    },
+    "ratingCount": {
+      "type": "integer"
+    },
+    "compare": {
+      "type": "boolean",
+      "default": false
+    },
+    "keySpecs": {
+      "displayName": "Key Spec",
+      "type": "component",
+      "repeatable": true,
+      "component": "product.key-spec"
+    },
+    "features": {
+      "displayName": "Features",
+      "type": "component",
+      "repeatable": true,
+      "component": "product.features"
+    },
+    "techSpecs": {
+      "displayName": "Tech Spec",
+      "type": "component",
+      "repeatable": true,
+      "component": "product.tech-spec"
+    }
+  }
+}
